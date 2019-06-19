@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+Los articulos
+{% endblock %}
+
+{% block content %}
+
+{% for post in posts %} 
+    <h2>{{ post.title }}</h2>
+    <div>
+        {{ post.text|linebreaksbr}}
+    </div>
+    <div>
+        {{ post.author.username }}
+    </div>
+    <p>
+        <a href="{% url 'post_edit' pk=post.pk %}">Editar</a>
+    </p>
+    <p>
+        <a href="{% url 'post_delete' pk=post.pk %}">Borrar</a>
+    </p>
+{% endfor %}
+
+{% endblock %}

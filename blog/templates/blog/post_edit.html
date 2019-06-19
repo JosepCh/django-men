@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    Nuevo post
+{% endblock %}
+
+{% block content %}
+    <h1>New post</h1>
+    <p>
+        <a href="{% url 'post_list' %}">Volver</a>
+    </p>
+    {% if success %}
+        <p>Creado <strong>{{ form.title.value }}</strong> con cierto exito😊</p>
+    {% endif %}
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+    
+{% endblock %}
